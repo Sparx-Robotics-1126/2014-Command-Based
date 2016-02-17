@@ -1,18 +1,20 @@
-
 package org.usfirst.frc.team1126.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
+import org.usfirst.frc.team1126.robot.OI;
 import org.usfirst.frc.team1126.robot.Robot;
+import org.usfirst.frc.team1126.robot.subsystems.Drives;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ExampleCommand extends Command {
+public class Driving extends Command {
 
-    public ExampleCommand() {
+    public Driving() {
+    	requires(CommandBase.drives);
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -21,8 +23,16 @@ public class ExampleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    //basically what this does is it chooses joysticks if there is no xBox controller, but disabled because it shows warnings.
+    //	if(OI.operatorJoy.getType() != -1) {
+    		Drives.setSpeed(OI.getOpJoyLY(), OI.getOpJoyRY());
+    	//}
+    	//else {
+    	//	Drives.setSpeed(OI.getleftJoyY(), OI.getrightJoyY());
+    //	}
+    	Drives.Driving();
     }
-
+    	
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return false;

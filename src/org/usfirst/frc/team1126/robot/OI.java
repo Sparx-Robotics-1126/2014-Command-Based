@@ -1,7 +1,7 @@
 package org.usfirst.frc.team1126.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
-import org.usfirst.frc.team1126.robot.commands.ExampleCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -34,5 +34,25 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	//MAKE SURE THAT JOYSTICKS ARE IN SLOTS 0&1, XBOX CONTROLLER IN 2
+    public static Joystick leftJoy = new Joystick(RobotMap.LEFT_DRIVER_JOY_PORT);
+    static Joystick rightJoy = new Joystick(RobotMap.RIGHT_DRIVER_JOY_PORT);
+    public static Joystick operatorJoy = new Joystick(RobotMap.OPER_JOY_PORT);
+    public static double getOpJoyLY() {
+        return operatorJoy.getRawAxis(1);
+    }
+    
+    public static double getOpJoyRY() {
+        return operatorJoy.getRawAxis(5);
+    }  
+    
+    public static double getleftJoyY() {
+    	return leftJoy.getY();
+    }
+    
+    public static double getrightJoyY() {
+    	return rightJoy.getY();
+    }
+    
 }
 
